@@ -8,6 +8,8 @@
       doom-theme 'doom-moonlight
       display-line-numbers-type 'relative)
 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
@@ -16,12 +18,8 @@
 ;;   presentations or streaming.
 ;; - `doom-unicode-font' -- for unicode glyphs
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-;;
-;; See 'C-h v doom-font' for documentation and more examples of what they
-;; accept. For example:
-;;
-(setq doom-font (font-spec :family "Fira Code" :size 13.25 :weight 'semibold)
-      doom-variable-pitch-font (font-spec :family "DejaVu Sans" :size 14))
+(setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'semibold)
+      doom-variable-pitch-font (font-spec :family "DejaVu Sans" :size 14.5))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
