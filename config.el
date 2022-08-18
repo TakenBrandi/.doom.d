@@ -1,29 +1,41 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
+;; idk why, but I like to group my settings and config into use-package!s
 
-(setq user-full-name "Brandi Bateman"
-      user-mail-address "takenbrandi@gmail.com"
-      doom-theme 'doom-moonlight
-      display-line-numbers-type 'relative)
+(use-package! emacs
+  :custom
+  (user-full-name "Brandi Bateman")
+  (user-mail-address "takenbrandi@gmail.com")
+  (doom-theme 'doom-moonlight)
+  (display-line-numbers-type 'relative)
+  :config
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+  (cond (IS-MAC
+         (setq mac-mouse-wheel-smooth-scroll t))))
 
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(use-package! doom
+  :custom
+  ;; Doom exposes five (optional) variables for controlling fonts in Doom:
+  ;;
+  ;; - `doom-font' -- the primary font to use
+  ;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
+  ;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
+  ;;   presentations or streaming.
+  ;; - `doom-unicode-font' -- for unicode glyphs
+  ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
+  (doom-font (font-spec :family "Fira Code" :size 14 :weight 'semibold))
+  (doom-variable-pitch-font (font-spec :family "DejaVu Sans" :size 14.5))
+  (doom-big-font (font-spec :family "DejaVu Sans" :size 24))
+  (doom-theme 'doom-dracula)
+  :bind
+  (:map evil-insert-state-map
+   ;; I don't use C-k for glyphs, but I hit it everytime I want to kill line, soo...
+   ("C-k" . kill-line)))
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom:
-;;
-;; - `doom-font' -- the primary font to use
-;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
-;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;; - `doom-unicode-font' -- for unicode glyphs
-;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-(setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'semibold)
-      doom-variable-pitch-font (font-spec :family "DejaVu Sans" :size 14.5))
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(use-package! org
+  :defer
+  :custom
+  (org-directory "~/org/"))
 
 (use-package! haskell
   :config
