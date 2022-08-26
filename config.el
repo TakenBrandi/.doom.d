@@ -14,7 +14,9 @@
          (setq mac-mouse-wheel-smooth-scroll t))))
 
 (use-package! doom
+
   :custom
+  (doom-theme 'doom-zenburn)
   ;; Doom exposes five (optional) variables for controlling fonts in Doom:
   ;;
   ;; - `doom-font' -- the primary font to use
@@ -26,7 +28,6 @@
   (doom-font (font-spec :family "Fira Code" :size 14 :weight 'semibold))
   (doom-variable-pitch-font (font-spec :family "DejaVu Sans" :size 14.5))
   (doom-big-font (font-spec :family "DejaVu Sans" :size 24))
-  (doom-theme 'doom-dracula)
   :bind
   (:map evil-insert-state-map
    ;; I don't use C-k for glyphs, but I hit it everytime I want to kill line, soo...
